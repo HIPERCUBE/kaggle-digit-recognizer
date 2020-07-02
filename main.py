@@ -13,6 +13,10 @@ train_y = train['label'].values
 test = pd.read_csv('data/test.csv')
 test_x = test.values / 255.0
 
+# Convert flatten x data into 2d array
+train_x = train_x.reshape(train_x.shape[0], 28, 28)
+test_x = test_x.reshape(test_x.shape[0], 28, 28)
+
 # Load model
 model = model.build_model()
 

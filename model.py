@@ -2,8 +2,12 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Flatten, Conv2D, Dropout
 
 
-def build_model():
+def simple_model():
+    """
+    Score: 0.97589
+    """
     model = Sequential([
+        Flatten(input_shape=(28, 28)),
         Dense(128, activation='relu'),
         Dropout(0.2),
         Dense(10, activation='softmax')
@@ -14,3 +18,17 @@ def build_model():
         metrics=['accuracy']
     )
     return model
+
+
+def simple_cnn():
+    """
+    Score:
+    """
+    model = Sequential([
+
+    ])
+    model.compile()
+
+
+def build_model():
+    return simple_model()
