@@ -1,5 +1,5 @@
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Flatten, Conv2D, Dropout, MaxPool2D
+from tensorflow.keras.layers import Dense, Flatten, Conv2D, Dropout, MaxPool2D, BatchNormalization
 
 
 def simple_model():
@@ -30,9 +30,11 @@ def simple_cnn():
         Conv2D(128, kernel_size=(3, 3), activation='relu'),
         MaxPool2D((2, 2)),
         Conv2D(64, kernel_size=(3, 3), activation='relu'),
+        BatchNormalization(),
         Flatten(),
         Dense(128, activation='relu'),
-        Dropout(0.2),
+        BatchNormalization(),
+        # Dropout(0.2),
         Dense(10, activation='softmax')
     ])
     model.compile(
