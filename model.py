@@ -27,14 +27,54 @@ def simple_cnn():
     model = Sequential([
         Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(28, 28, 1)),
         MaxPool2D((2, 2)),
+
         Conv2D(128, kernel_size=(3, 3), activation='relu'),
         MaxPool2D((2, 2)),
+
         Conv2D(64, kernel_size=(3, 3), activation='relu'),
         BatchNormalization(),
+
         Flatten(),
         Dense(128, activation='relu'),
         BatchNormalization(),
-        # Dropout(0.2),
+
+        Dropout(0.2),
+        Dense(10, activation='softmax')
+    ])
+    model.compile(
+        optimizer='adam',
+        loss='sparse_categorical_crossentropy',
+        metrics=['accuracy']
+    )
+    return model
+
+
+def complicated_cnn():
+    """
+    Score: 0.
+    """
+    model = Sequential([
+        Conv2D(96, kernel_size=(3, 3), activation='relu', input_shape=(28, 28, 1)),
+        BatchNormalization(),
+        Conv2D(96, kernel_size=(3, 3), activation='relu'),
+        BatchNormalization(),
+        MaxPool2D((2, 2)),
+
+        Conv2D(192, kernel_size=(3, 3), activation='relu', padding='same'),
+        BatchNormalization(),
+        Conv2D(256, kernel_size=(3, 3), activation='relu', padding='same'),
+        BatchNormalization(),
+        MaxPool2D((2, 2)),
+
+        Conv2D(256, kernel_size=(3, 3), activation='relu', padding='same'),
+        BatchNormalization(),
+        Conv2D(256, kernel_size=(3, 3), activation='relu', padding='same'),
+
+        Flatten(),
+        Dense(256, activation='relu'),
+        BatchNormalization(),
+
+        Dropout(0.2),
         Dense(10, activation='softmax')
     ])
     model.compile(
@@ -46,6 +86,6 @@ def simple_cnn():
 
 
 def build_model():
-    model = simple_cnn()
+    model = complicated_cnn()
     model.summary()
     return model
