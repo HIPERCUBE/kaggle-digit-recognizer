@@ -22,7 +22,7 @@ def simple_model():
 
 def simple_cnn():
     """
-    Score:
+    Score: 0.99117
     """
     model = Sequential([
         Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(28, 28, 1)),
