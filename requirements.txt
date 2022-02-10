@@ -27,7 +27,7 @@ requests==2.24.0
 scipy @ file:///opt/concourse/worker/volumes/live/5de63de1-ebe3-42a0-667e-ce551df4774f/volume/scipy_1592940143707/work
 six==1.15.0
 tensorboard==2.0.0
-tensorflow==2.0.0
+tensorflow==2.5.3
 tensorflow-estimator==2.0.0
 termcolor==1.1.0
 text-unidecode==1.3
